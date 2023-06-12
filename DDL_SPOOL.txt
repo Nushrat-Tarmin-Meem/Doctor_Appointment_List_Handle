@@ -1,0 +1,80 @@
+SQL> set linesize 300
+
+SQL> drop table medicine;
+
+Table dropped.
+
+SQL> drop table health_issue;
+
+Table dropped.
+
+SQL> drop table patient;
+
+Table dropped.
+
+SQL> drop table doctor;
+
+Table dropped.
+
+SQL> create table doctor(
+  2  doctor_id number(10),
+  3  doctor_name varchar(20) NOT NULL,
+  4  category varchar(20) NOT NULL,
+  5  phone_no varchar(15),
+  6  address varchar(20),
+  7  fees number(10),
+  8  primary key(doctor_id)
+  9  );
+
+Table created.
+
+SQL> create table patient(
+  2  patient_id number(10),
+  3  patient_name varchar(20),
+  4  doctor_id number(10),
+  5  age number(3) CHECK(age>=18),
+  6  height_meter number(3,2),
+  7  weight_kg number(5,2),
+  8  primary key(patient_id),
+  9  foreign key(doctor_id) references doctor
+ 10  );
+
+Table created.
+
+SQL> create table health_issue(
+  2  patient_id number(10),
+  3  disease varchar(30),
+  4  last_vt date,
+  5  next_vt date,
+  6  foreign key(patient_id) references patient
+  7  );
+
+Table created.
+
+SQL> create table medicine(
+  2  patient_id number(10),
+  3  medicine_name varchar(30),
+  4  test_package_amount number(10),
+  5  paid_payment number(10),
+  6  foreign key(patient_id) references patient
+  7  );
+
+Table created.
+
+SQL> alter table patient add bmi_rate number(5);
+
+Table altered.
+
+SQL> alter table patient modify bmi_rate number(4,2);
+
+Table altered.
+
+SQL> alter table patient rename column bmi_rate to bmi;
+
+Table altered.
+
+SQL> alter table patient drop column bmi;
+
+Table altered.
+
+SQL> SPOOL OFF

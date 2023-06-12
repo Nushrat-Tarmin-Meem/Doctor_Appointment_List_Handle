@@ -1,0 +1,192 @@
+SQL> create table medical_checkup(
+  2      patient_id number(10),
+  3      blood_group char(3),
+  4      systolic_blood_pressure varchar(10),
+  5      diastolic_blood_pressure varchar(10),
+  6      heart_rate number,
+  7      foreign key(patient_id) references patient(patient_id)
+  8  );
+
+Table created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(2,'A+','110','70',80);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(3,'AB+','120','70',100);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(5,'B+','80','90',60);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(1,'A+','110','70',80);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(7,'O+','60','70',90);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(9,'AB-','90','80',120);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(4,'A+','110','80',112);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(8,'O-','120','76',85);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(10,'A+','70','92',80);
+
+1 row created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(6,'A+','120','75',90);
+
+1 row created.
+
+SQL> ---insert trigger
+SQL> SET SERVEROUTPUT ON
+SQL> CREATE OR REPLACE TRIGGER trigger_i
+  2  before insert ON medical_checkup
+  3  REFERENCING OLD AS o NEW AS n
+  4  FOR EACH ROW
+  5  Enable
+  6  BEGIN
+  7  insert into patient(patient_id) values(:n.patient_id);
+  8  END;
+  9  /
+
+Trigger created.
+
+SQL> insert into medical_checkup(patient_id,blood_group,systolic_blood_pressure,diastolic_blood_pressure,heart_rate) values(15,'A+','120','75',90);
+
+1 row created.
+
+SQL> select * from patient;
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG        BMI                                                                                                                                                                                                                    
+---------- -------------------- ---------- ---------- ------------ ---------- ----------                                                                                                                                                                                                                    
+         1 Mr.Rahim                      2         58         1.53       62.5       26.7                                                                                                                                                                                                                    
+         2 Mr.Farooq                     2         43         1.57       65.5      26.57                                                                                                                                                                                                                    
+         3 Mrs.Rahima                    3         38         1.52       60.5      26.19                                                                                                                                                                                                                    
+         4 Mr.Ram                        1         39         1.57       67.5      27.38                                                                                                                                                                                                                    
+         5 Mr.Fahim                      4         51         1.53       61.5      26.27                                                                                                                                                                                                                    
+         6 Ms.Riya                       2         50         1.63       63.5       23.9                                                                                                                                                                                                                    
+         7 Ms.Rattri                     5         54         1.53       77.5      33.11                                                                                                                                                                                                                    
+         8 Mr.Kafi                       8         56         1.61         62      23.92                                                                                                                                                                                                                    
+         9 Mr.Rahat                      7         43         1.43         61      29.83                                                                                                                                                                                                                    
+        10 Ms.Keya                       7         19         1.93       52.5      14.09                                                                                                                                                                                                                    
+        15                                                                                                                                                                                                                                                                                                  
+
+11 rows selected.
+
+SQL> update patient set patient_name='Mr.Roy',doctor_id=1,age=67,height_meter=1.56,weight_kg=67.9 where patient_id=15;
+
+1 row updated.
+
+SQL> select * from patient;
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG        BMI                                                                                                                                                                                                                    
+---------- -------------------- ---------- ---------- ------------ ---------- ----------                                                                                                                                                                                                                    
+         1 Mr.Rahim                      2         58         1.53       62.5       26.7                                                                                                                                                                                                                    
+         2 Mr.Farooq                     2         43         1.57       65.5      26.57                                                                                                                                                                                                                    
+         3 Mrs.Rahima                    3         38         1.52       60.5      26.19                                                                                                                                                                                                                    
+         4 Mr.Ram                        1         39         1.57       67.5      27.38                                                                                                                                                                                                                    
+         5 Mr.Fahim                      4         51         1.53       61.5      26.27                                                                                                                                                                                                                    
+         6 Ms.Riya                       2         50         1.63       63.5       23.9                                                                                                                                                                                                                    
+         7 Ms.Rattri                     5         54         1.53       77.5      33.11                                                                                                                                                                                                                    
+         8 Mr.Kafi                       8         56         1.61         62      23.92                                                                                                                                                                                                                    
+         9 Mr.Rahat                      7         43         1.43         61      29.83                                                                                                                                                                                                                    
+        10 Ms.Keya                       7         19         1.93       52.5      14.09                                                                                                                                                                                                                    
+        15 Mr.Roy                        1         67         1.56       67.9                                                                                                                                                                                                                               
+
+11 rows selected.
+
+SQL> select * from medical_checkup;
+
+PATIENT_ID BLO SYSTOLIC_B DIASTOLIC_ HEART_RATE                                                                                                                                                                                                                                                             
+---------- --- ---------- ---------- ----------                                                                                                                                                                                                                                                             
+         2 A+  110        70                 80                                                                                                                                                                                                                                                             
+         3 AB+ 120        70                100                                                                                                                                                                                                                                                             
+         5 B+  80         90                 60                                                                                                                                                                                                                                                             
+         1 A+  110        70                 80                                                                                                                                                                                                                                                             
+         7 O+  60         70                 90                                                                                                                                                                                                                                                             
+         9 AB- 90         80                120                                                                                                                                                                                                                                                             
+         4 A+  110        80                112                                                                                                                                                                                                                                                             
+         8 O-  120        76                 85                                                                                                                                                                                                                                                             
+        10 A+  70         92                 80                                                                                                                                                                                                                                                             
+         6 A+  120        75                 90                                                                                                                                                                                                                                                             
+        15 A+  120        75                 90                                                                                                                                                                                                                                                             
+
+11 rows selected.
+
+SQL> ---delete trigger
+SQL> SET SERVEROUTPUT ON
+SQL> CREATE OR REPLACE TRIGGER trigger_d
+  2  before delete ON patient
+  3  REFERENCING OLD AS o NEW AS n
+  4  FOR EACH ROW
+  5  ENABLE
+  6  BEGIN
+  7  delete from medical_checkup where patient_id=:o.patient_id;
+  8  END;
+  9  /
+
+Trigger created.
+
+SQL> delete from patient where patient_id=15;
+
+1 row deleted.
+
+SQL> select * from patient;
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG        BMI                                                                                                                                                                                                                    
+---------- -------------------- ---------- ---------- ------------ ---------- ----------                                                                                                                                                                                                                    
+         1 Mr.Rahim                      2         58         1.53       62.5       26.7                                                                                                                                                                                                                    
+         2 Mr.Farooq                     2         43         1.57       65.5      26.57                                                                                                                                                                                                                    
+         3 Mrs.Rahima                    3         38         1.52       60.5      26.19                                                                                                                                                                                                                    
+         4 Mr.Ram                        1         39         1.57       67.5      27.38                                                                                                                                                                                                                    
+         5 Mr.Fahim                      4         51         1.53       61.5      26.27                                                                                                                                                                                                                    
+         6 Ms.Riya                       2         50         1.63       63.5       23.9                                                                                                                                                                                                                    
+         7 Ms.Rattri                     5         54         1.53       77.5      33.11                                                                                                                                                                                                                    
+         8 Mr.Kafi                       8         56         1.61         62      23.92                                                                                                                                                                                                                    
+         9 Mr.Rahat                      7         43         1.43         61      29.83                                                                                                                                                                                                                    
+        10 Ms.Keya                       7         19         1.93       52.5      14.09                                                                                                                                                                                                                    
+
+10 rows selected.
+
+SQL> select * from medical_checkup;
+
+PATIENT_ID BLO SYSTOLIC_B DIASTOLIC_ HEART_RATE                                                                                                                                                                                                                                                             
+---------- --- ---------- ---------- ----------                                                                                                                                                                                                                                                             
+         2 A+  110        70                 80                                                                                                                                                                                                                                                             
+         3 AB+ 120        70                100                                                                                                                                                                                                                                                             
+         5 B+  80         90                 60                                                                                                                                                                                                                                                             
+         1 A+  110        70                 80                                                                                                                                                                                                                                                             
+         7 O+  60         70                 90                                                                                                                                                                                                                                                             
+         9 AB- 90         80                120                                                                                                                                                                                                                                                             
+         4 A+  110        80                112                                                                                                                                                                                                                                                             
+         8 O-  120        76                 85                                                                                                                                                                                                                                                             
+        10 A+  70         92                 80                                                                                                                                                                                                                                                             
+         6 A+  120        75                 90                                                                                                                                                                                                                                                             
+
+10 rows selected.
+
+SQL> drop trigger trigger_i;
+
+Trigger dropped.
+
+SQL> drop trigger trigger_d;
+
+Trigger dropped.
+
+SQL> drop table medical_checkup;
+
+Table dropped.
+
+SQL> SPOOL OFF

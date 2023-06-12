@@ -1,0 +1,522 @@
+SQL> insert into doctor values(1,'Dr.Hina','Cardiologist','01782366744','Dhaka',1000);
+
+1 row created.
+
+SQL> insert into doctor values(2,'Dr.Himel','Surgeon','01782366731','Pune',5000);
+
+1 row created.
+
+SQL> insert into doctor values(3,'Dr.Auishi','Cardiologist','01782366244','Khulna',1000);
+
+1 row created.
+
+SQL> insert into doctor values(4,'Dr.Manya','Neurologist','01782366744','Dhaka',8000);
+
+1 row created.
+
+SQL> insert into doctor values(5,'Dr.Tisa','Psychiatrist','01732366744','Dhaka',1500);
+
+1 row created.
+
+SQL> insert into doctor values(6,'Dr.Sishir','Radiologist','01782366722','Rangpur',1000);
+
+1 row created.
+
+SQL> insert into doctor values(7,'Dr.Ritu','Cardiologist','01782146744','Dhaka',2000);
+
+1 row created.
+
+SQL> insert into doctor values(8,'Dr.Titu','Urologist','01382366744','Rangamati',500);
+
+1 row created.
+
+SQL> insert into doctor values(9,'Dr.Hiya','Neurologist','01782322744','Dhaka',7000);
+
+1 row created.
+
+SQL> insert into doctor values(10,'Dr.Mila','Pediatrician','01782366744','Dhaka',800);
+
+1 row created.
+
+SQL> insert into patient values(1,'Mr.Rahim',   2,  58,  1.53,  62.5);
+
+1 row created.
+
+SQL> insert into patient values(2,'Mr.Farooq',  2,  43,  1.57,  65.5);
+
+1 row created.
+
+SQL> insert into patient values(3,'Mrs.Rahima', 3,  38,  1.52,  60.5);
+
+1 row created.
+
+SQL> insert into patient values(4,'Mr.Ram',     1,  39,  1.57,  67.5);
+
+1 row created.
+
+SQL> insert into patient values(5,'Mr.Fahim',   4,  51,  1.53,  61.5);
+
+1 row created.
+
+SQL> insert into patient values(6,'Ms.Riya',    2,  50,  1.63,  63.5);
+
+1 row created.
+
+SQL> insert into patient values(7,'Ms.Rattri',  5,  54,  1.53,  77.5);
+
+1 row created.
+
+SQL> insert into patient values(8,'Mr.Kafi',    8,  56,  1.61,  62.0);
+
+1 row created.
+
+SQL> insert into patient values(9,'Mr.Rahat',   7,  43,  1.43,  61.0);
+
+1 row created.
+
+SQL> insert into patient values(10,'Ms.Keya',   7,  19,  1.93,  52.5);
+
+1 row created.
+
+SQL> insert into health_issue values(5,'Brain Tumor', date '2022-06-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into health_issue values(1,'Coronary Heart Disease', date '2021-06-13', date '2021-08-13');
+
+1 row created.
+
+SQL> insert into health_issue values(6,'Brain Tumor', date '2022-08-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into health_issue values(2,'Coronary Heart Disease', date '2020-06-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into health_issue values(7,'Extra Hyper', date '2022-04-18', date '2023-01-18');
+
+1 row created.
+
+SQL> insert into health_issue values(9,'Brain Tumor', date '2022-06-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into health_issue values(3,'Heart Attack', date '2022-09-13', date '2023-02-13');
+
+1 row created.
+
+SQL> insert into health_issue values(4,'Aortic Disease', date '2022-06-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into health_issue values(10,'Brain Tumor', date '2022-06-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into health_issue values(8,'CKD', date '2022-06-13', date '2023-01-13');
+
+1 row created.
+
+SQL> insert into medicine values(1,'Beta-Blockers',10000,8000);
+
+1 row created.
+
+SQL> insert into medicine values(5,'Afinitor',8000,8000);
+
+1 row created.
+
+SQL> insert into medicine values(10,'Avastin',10000,10000);
+
+1 row created.
+
+SQL> insert into medicine values(9,'Carmustine',12000,10000);
+
+1 row created.
+
+SQL> insert into medicine values(8,'Zyloprim',8000,8000);
+
+1 row created.
+
+SQL> insert into medicine values(2,'Beta-Blockers',10000,8000);
+
+1 row created.
+
+SQL> insert into medicine values(3,'Beta-Blockers',15000,14500);
+
+1 row created.
+
+SQL> insert into medicine values(4,'Beta-Blockers',10000,9500);
+
+1 row created.
+
+SQL> insert into medicine values(7,'Tiptin 500mg',7000,7000);
+
+1 row created.
+
+SQL> insert into medicine values(6,'Alymsys',10000,8800);
+
+1 row created.
+
+
+SQL> select * from doctor;
+
+ DOCTOR_ID DOCTOR_NAME          CATEGORY             PHONE_NO        ADDRESS                    FEES                                                                                                                                                                                                        
+---------- -------------------- -------------------- --------------- -------------------- ----------                                                                                                                                                                                                        
+         1 Dr.Hina              Cardiologist         01782366744     Dhaka                      1000                                                                                                                                                                                                        
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000                                                                                                                                                                                                        
+         3 Dr.Auishi            Cardiologist         01782366244     Khulna                     1000                                                                                                                                                                                                        
+         4 Dr.Manya             Neurologist          01782366744     Dhaka                      8000                                                                                                                                                                                                        
+         5 Dr.Tisa              Psychiatrist         01732366744     Dhaka                      1500                                                                                                                                                                                                        
+         6 Dr.Sishir            Radiologist          01782366722     Rangpur                    1000                                                                                                                                                                                                        
+         7 Dr.Ritu              Cardiologist         01782146744     Dhaka                      2000                                                                                                                                                                                                        
+         8 Dr.Titu              Urologist            01382366744     Rangamati                   500                                                                                                                                                                                                        
+         9 Dr.Hiya              Neurologist          01782322744     Dhaka                      7000                                                                                                                                                                                                        
+        10 Dr.Mila              Pediatrician         01782366744     Dhaka                       800                                                                                                                                                                                                        
+
+10 rows selected.
+
+SQL> select * from patient;
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG                                                                                                                                                                                                                               
+---------- -------------------- ---------- ---------- ------------ ----------                                                                                                                                                                                                                               
+         1 Mr.Rahim                      2         58         1.53       62.5                                                                                                                                                                                                                               
+         2 Mr.Farooq                     2         43         1.57       65.5                                                                                                                                                                                                                               
+         3 Mrs.Rahima                    3         38         1.52       60.5                                                                                                                                                                                                                               
+         4 Mr.Ram                        1         39         1.57       67.5                                                                                                                                                                                                                               
+         5 Mr.Fahim                      4         51         1.53       61.5                                                                                                                                                                                                                               
+         6 Ms.Riya                       2         50         1.63       63.5                                                                                                                                                                                                                               
+         7 Ms.Rattri                     5         54         1.53       77.5                                                                                                                                                                                                                               
+         8 Mr.Kafi                       8         56         1.61         62                                                                                                                                                                                                                               
+         9 Mr.Rahat                      7         43         1.43         61                                                                                                                                                                                                                               
+        10 Ms.Keya                       7         19         1.93       52.5                                                                                                                                                                                                                               
+
+10 rows selected.
+
+SQL> select * from health_issue;
+
+PATIENT_ID DISEASE                        LAST_VT   NEXT_VT                                                                                                                                                                                                                                                 
+---------- ------------------------------ --------- ---------                                                                                                                                                                                                                                               
+         5 Brain Tumor                    13-JUN-22 13-JAN-23                                                                                                                                                                                                                                               
+         1 Coronary Heart Disease         13-JUN-21 13-AUG-21                                                                                                                                                                                                                                               
+         6 Brain Tumor                    13-AUG-22 13-JAN-23                                                                                                                                                                                                                                               
+         2 Coronary Heart Disease         13-JUN-20 13-JAN-23                                                                                                                                                                                                                                               
+         7 Extra Hyper                    18-APR-22 18-JAN-23                                                                                                                                                                                                                                               
+         9 Brain Tumor                    13-JUN-22 13-JAN-23                                                                                                                                                                                                                                               
+         3 Heart Attack                   13-SEP-22 13-FEB-23                                                                                                                                                                                                                                               
+         4 Aortic Disease                 13-JUN-22 13-JAN-23                                                                                                                                                                                                                                               
+        10 Brain Tumor                    13-JUN-22 13-JAN-23                                                                                                                                                                                                                                               
+         8 CKD                            13-JUN-22 13-JAN-23                                                                                                                                                                                                                                               
+
+10 rows selected.
+
+SQL> select * from medicine;
+
+PATIENT_ID MEDICINE_NAME                  TEST_PACKAGE_AMOUNT PAID_PAYMENT                                                                                                                                                                                                                                  
+---------- ------------------------------ ------------------- ------------                                                                                                                                                                                                                                  
+         1 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         5 Afinitor                                      8000         8000                                                                                                                                                                                                                                  
+        10 Avastin                                      10000        10000                                                                                                                                                                                                                                  
+         9 Carmustine                                   12000        10000                                                                                                                                                                                                                                  
+         8 Zyloprim                                      8000         8000                                                                                                                                                                                                                                  
+         2 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         3 Beta-Blockers                                15000        14500                                                                                                                                                                                                                                  
+         4 Beta-Blockers                                10000         9500                                                                                                                                                                                                                                  
+         7 Tiptin 500mg                                  7000         7000                                                                                                                                                                                                                                  
+         6 Alymsys                                      10000         8800                                                                                                                                                                                                                                  
+
+10 rows selected.
+
+SQL> 
+SQL> 
+SQL> select * from doctor where fees>1000;
+
+ DOCTOR_ID DOCTOR_NAME          CATEGORY             PHONE_NO        ADDRESS                    FEES                                                                                                                                                                                                        
+---------- -------------------- -------------------- --------------- -------------------- ----------                                                                                                                                                                                                        
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000                                                                                                                                                                                                        
+         4 Dr.Manya             Neurologist          01782366744     Dhaka                      8000                                                                                                                                                                                                        
+         5 Dr.Tisa              Psychiatrist         01732366744     Dhaka                      1500                                                                                                                                                                                                        
+         7 Dr.Ritu              Cardiologist         01782146744     Dhaka                      2000                                                                                                                                                                                                        
+         9 Dr.Hiya              Neurologist          01782322744     Dhaka                      7000                                                                                                                                                                                                        
+
+SQL> 
+SQL> select doctor_name from doctor where doctor_id=(select doctor_id from patient where patient_id=(select patient_id from medicine where medicine_name='Alymsys'));
+
+DOCTOR_NAME                                                                                                                                                                                                                                                                                                 
+--------------------                                                                                                                                                                                                                                                                                        
+Dr.Himel                                                                                                                                                                                                                                                                                                    
+
+SQL> 
+SQL> update health_issue set disease='Coronary Kidney Disease' where disease='CKD';
+
+1 row updated.
+
+SQL> 
+SQL> insert into medicine values(1,'xsdf',4000,23000);
+
+1 row created.
+
+SQL> select * from medicine;
+
+PATIENT_ID MEDICINE_NAME                  TEST_PACKAGE_AMOUNT PAID_PAYMENT                                                                                                                                                                                                                                  
+---------- ------------------------------ ------------------- ------------                                                                                                                                                                                                                                  
+         1 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         5 Afinitor                                      8000         8000                                                                                                                                                                                                                                  
+        10 Avastin                                      10000        10000                                                                                                                                                                                                                                  
+         9 Carmustine                                   12000        10000                                                                                                                                                                                                                                  
+         8 Zyloprim                                      8000         8000                                                                                                                                                                                                                                  
+         2 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         3 Beta-Blockers                                15000        14500                                                                                                                                                                                                                                  
+         4 Beta-Blockers                                10000         9500                                                                                                                                                                                                                                  
+         7 Tiptin 500mg                                  7000         7000                                                                                                                                                                                                                                  
+         6 Alymsys                                      10000         8800                                                                                                                                                                                                                                  
+         1 xsdf                                          4000        23000                                                                                                                                                                                                                                  
+
+11 rows selected.
+
+SQL> delete from medicine where paid_payment>test_package_amount;
+
+1 row deleted.
+
+SQL> select * from medicine;
+
+PATIENT_ID MEDICINE_NAME                  TEST_PACKAGE_AMOUNT PAID_PAYMENT                                                                                                                                                                                                                                  
+---------- ------------------------------ ------------------- ------------                                                                                                                                                                                                                                  
+         1 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         5 Afinitor                                      8000         8000                                                                                                                                                                                                                                  
+        10 Avastin                                      10000        10000                                                                                                                                                                                                                                  
+         9 Carmustine                                   12000        10000                                                                                                                                                                                                                                  
+         8 Zyloprim                                      8000         8000                                                                                                                                                                                                                                  
+         2 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         3 Beta-Blockers                                15000        14500                                                                                                                                                                                                                                  
+         4 Beta-Blockers                                10000         9500                                                                                                                                                                                                                                  
+         7 Tiptin 500mg                                  7000         7000                                                                                                                                                                                                                                  
+         6 Alymsys                                      10000         8800                                                                                                                                                                                                                                  
+
+10 rows selected.
+
+SQL> 
+SQL> select medicine_name from medicine where medicine_name like 'B%' union select medicine_name from medicine where medicine_name like '%s';
+
+MEDICINE_NAME                                                                                                                                                                                                                                                                                               
+------------------------------                                                                                                                                                                                                                                                                              
+Beta-Blockers                                                                                                                                                                                                                                                                                               
+Alymsys                                                                                                                                                                                                                                                                                                     
+
+SQL> 
+SQL> select medicine_name from medicine where medicine_name like 'B%' intersect select medicine_name from medicine where medicine_name like '%s';
+
+MEDICINE_NAME                                                                                                                                                                                                                                                                                               
+------------------------------                                                                                                                                                                                                                                                                              
+Beta-Blockers                                                                                                                                                                                                                                                                                               
+
+SQL> 
+SQL> select count(*) as total_no_of_doctors from doctor;
+
+TOTAL_NO_OF_DOCTORS                                                                                                                                                                                                                                                                                         
+-------------------                                                                                                                                                                                                                                                                                         
+                 10                                                                                                                                                                                                                                                                                         
+
+SQL> 
+SQL> select count(medicine_name) as no_of_medicines from medicine;
+
+NO_OF_MEDICINES                                                                                                                                                                                                                                                                                             
+---------------                                                                                                                                                                                                                                                                                             
+             10                                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select count(distinct medicine_name) as no_of_medicines from medicine;
+
+NO_OF_MEDICINES                                                                                                                                                                                                                                                                                             
+---------------                                                                                                                                                                                                                                                                                             
+              7                                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select sum(paid_payment) as income_from_test_package from medicine;
+
+INCOME_FROM_TEST_PACKAGE                                                                                                                                                                                                                                                                                    
+------------------------                                                                                                                                                                                                                                                                                    
+                   91800                                                                                                                                                                                                                                                                                    
+
+SQL> 
+SQL> select avg(fees) as average_fees_of_doctor from doctor;
+
+AVERAGE_FEES_OF_DOCTOR                                                                                                                                                                                                                                                                                      
+----------------------                                                                                                                                                                                                                                                                                      
+                  2780                                                                                                                                                                                                                                                                                      
+
+SQL> 
+SQL> select doctor_name,fees from doctor where fees=(select max(fees) from doctor);
+
+DOCTOR_NAME                FEES                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Dr.Manya                   8000                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select doctor_name,fees from doctor where fees=(select min(fees) from doctor);
+
+DOCTOR_NAME                FEES                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Dr.Titu                     500                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select doctor_name,fees from doctor where fees=(select min(fees) from doctor where fees!=(select min(fees) from doctor));
+
+DOCTOR_NAME                FEES                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Dr.Mila                     800                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select category,avg(fees) from doctor group by category having avg(fees)>1000;
+
+CATEGORY              AVG(FEES)                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Cardiologist         1333.33333                                                                                                                                                                                                                                                                             
+Surgeon                    5000                                                                                                                                                                                                                                                                             
+Neurologist                7500                                                                                                                                                                                                                                                                             
+Psychiatrist               1500                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select category,avg(fees) from doctor group by category having avg(fees)>=1500;
+
+CATEGORY              AVG(FEES)                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Surgeon                    5000                                                                                                                                                                                                                                                                             
+Neurologist                7500                                                                                                                                                                                                                                                                             
+Psychiatrist               1500                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select address,avg(fees) from doctor group by address;
+
+ADDRESS               AVG(FEES)                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Dhaka                3383.33333                                                                                                                                                                                                                                                                             
+Pune                       5000                                                                                                                                                                                                                                                                             
+Khulna                     1000                                                                                                                                                                                                                                                                             
+Rangpur                    1000                                                                                                                                                                                                                                                                             
+Rangamati                   500                                                                                                                                                                                                                                                                             
+
+SQL> 
+SQL> select * from patient where doctor_id in (select doctor_id from doctor where category='Cardiologist') and patient_id in (select patient_id from medicine where medicine_name like 'B%');
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG                                                                                                                                                                                                                               
+---------- -------------------- ---------- ---------- ------------ ----------                                                                                                                                                                                                                               
+         3 Mrs.Rahima                    3         38         1.52       60.5                                                                                                                                                                                                                               
+         4 Mr.Ram                        1         39         1.57       67.5                                                                                                                                                                                                                               
+
+SQL> 
+SQL> select * from doctor where fees>some(5000);
+
+ DOCTOR_ID DOCTOR_NAME          CATEGORY             PHONE_NO        ADDRESS                    FEES                                                                                                                                                                                                        
+---------- -------------------- -------------------- --------------- -------------------- ----------                                                                                                                                                                                                        
+         4 Dr.Manya             Neurologist          01782366744     Dhaka                      8000                                                                                                                                                                                                        
+         9 Dr.Hiya              Neurologist          01782322744     Dhaka                      7000                                                                                                                                                                                                        
+
+SQL> 
+SQL> select * from doctor where fees>all(3000);
+
+ DOCTOR_ID DOCTOR_NAME          CATEGORY             PHONE_NO        ADDRESS                    FEES                                                                                                                                                                                                        
+---------- -------------------- -------------------- --------------- -------------------- ----------                                                                                                                                                                                                        
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000                                                                                                                                                                                                        
+         4 Dr.Manya             Neurologist          01782366744     Dhaka                      8000                                                                                                                                                                                                        
+         9 Dr.Hiya              Neurologist          01782322744     Dhaka                      7000                                                                                                                                                                                                        
+
+SQL> 
+SQL> select patient_name from patient where doctor_id in (select doctor_id from doctor where category like 'Cardiologist') and patient_id in (select patient_id from health_issue where disease='Brain Tumor');
+
+PATIENT_NAME                                                                                                                                                                                                                                                                                                
+--------------------                                                                                                                                                                                                                                                                                        
+Mr.Rahat                                                                                                                                                                                                                                                                                                    
+Ms.Keya                                                                                                                                                                                                                                                                                                     
+
+SQL> 
+SQL> select * from doctor natural join patient where doctor_id=2;
+
+ DOCTOR_ID DOCTOR_NAME          CATEGORY             PHONE_NO        ADDRESS                    FEES PATIENT_ID PATIENT_NAME                AGE HEIGHT_METER  WEIGHT_KG                                                                                                                                     
+---------- -------------------- -------------------- --------------- -------------------- ---------- ---------- -------------------- ---------- ------------ ----------                                                                                                                                     
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000          1 Mr.Rahim                     58         1.53       62.5                                                                                                                                     
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000          2 Mr.Farooq                    43         1.57       65.5                                                                                                                                     
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000          6 Ms.Riya                      50         1.63       63.5                                                                                                                                     
+
+SQL> 
+SQL> select doctor_name,patient_name from doctor join patient using(doctor_id);
+
+DOCTOR_NAME          PATIENT_NAME                                                                                                                                                                                                                                                                           
+-------------------- --------------------                                                                                                                                                                                                                                                                   
+Dr.Himel             Mr.Rahim                                                                                                                                                                                                                                                                               
+Dr.Himel             Mr.Farooq                                                                                                                                                                                                                                                                              
+Dr.Auishi            Mrs.Rahima                                                                                                                                                                                                                                                                             
+Dr.Hina              Mr.Ram                                                                                                                                                                                                                                                                                 
+Dr.Manya             Mr.Fahim                                                                                                                                                                                                                                                                               
+Dr.Himel             Ms.Riya                                                                                                                                                                                                                                                                                
+Dr.Tisa              Ms.Rattri                                                                                                                                                                                                                                                                              
+Dr.Titu              Mr.Kafi                                                                                                                                                                                                                                                                                
+Dr.Ritu              Mr.Rahat                                                                                                                                                                                                                                                                               
+Dr.Ritu              Ms.Keya                                                                                                                                                                                                                                                                                
+
+10 rows selected.
+
+SQL> 
+SQL> select * from doctor join patient using(doctor_id);
+
+ DOCTOR_ID DOCTOR_NAME          CATEGORY             PHONE_NO        ADDRESS                    FEES PATIENT_ID PATIENT_NAME                AGE HEIGHT_METER  WEIGHT_KG                                                                                                                                     
+---------- -------------------- -------------------- --------------- -------------------- ---------- ---------- -------------------- ---------- ------------ ----------                                                                                                                                     
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000          1 Mr.Rahim                     58         1.53       62.5                                                                                                                                     
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000          2 Mr.Farooq                    43         1.57       65.5                                                                                                                                     
+         3 Dr.Auishi            Cardiologist         01782366244     Khulna                     1000          3 Mrs.Rahima                   38         1.52       60.5                                                                                                                                     
+         1 Dr.Hina              Cardiologist         01782366744     Dhaka                      1000          4 Mr.Ram                       39         1.57       67.5                                                                                                                                     
+         4 Dr.Manya             Neurologist          01782366744     Dhaka                      8000          5 Mr.Fahim                     51         1.53       61.5                                                                                                                                     
+         2 Dr.Himel             Surgeon              01782366731     Pune                       5000          6 Ms.Riya                      50         1.63       63.5                                                                                                                                     
+         5 Dr.Tisa              Psychiatrist         01732366744     Dhaka                      1500          7 Ms.Rattri                    54         1.53       77.5                                                                                                                                     
+         8 Dr.Titu              Urologist            01382366744     Rangamati                   500          8 Mr.Kafi                      56         1.61         62                                                                                                                                     
+         7 Dr.Ritu              Cardiologist         01782146744     Dhaka                      2000          9 Mr.Rahat                     43         1.43         61                                                                                                                                     
+         7 Dr.Ritu              Cardiologist         01782146744     Dhaka                      2000         10 Ms.Keya                      19         1.93       52.5                                                                                                                                     
+
+10 rows selected.
+
+SQL> 
+SQL> select doctor_name,patient_name from doctor left outer join patient using(doctor_id);
+
+DOCTOR_NAME          PATIENT_NAME                                                                                                                                                                                                                                                                           
+-------------------- --------------------                                                                                                                                                                                                                                                                   
+Dr.Himel             Mr.Rahim                                                                                                                                                                                                                                                                               
+Dr.Himel             Mr.Farooq                                                                                                                                                                                                                                                                              
+Dr.Auishi            Mrs.Rahima                                                                                                                                                                                                                                                                             
+Dr.Hina              Mr.Ram                                                                                                                                                                                                                                                                                 
+Dr.Manya             Mr.Fahim                                                                                                                                                                                                                                                                               
+Dr.Himel             Ms.Riya                                                                                                                                                                                                                                                                                
+Dr.Tisa              Ms.Rattri                                                                                                                                                                                                                                                                              
+Dr.Titu              Mr.Kafi                                                                                                                                                                                                                                                                                
+Dr.Ritu              Mr.Rahat                                                                                                                                                                                                                                                                               
+Dr.Ritu              Ms.Keya                                                                                                                                                                                                                                                                                
+Dr.Sishir                                                                                                                                                                                                                                                                                                   
+
+DOCTOR_NAME          PATIENT_NAME                                                                                                                                                                                                                                                                           
+-------------------- --------------------                                                                                                                                                                                                                                                                   
+Dr.Mila                                                                                                                                                                                                                                                                                                     
+Dr.Hiya                                                                                                                                                                                                                                                                                                     
+
+13 rows selected.
+
+SQL> 
+SQL> select doctor_name,patient_name from doctor right outer join patient using(doctor_id);
+
+DOCTOR_NAME          PATIENT_NAME                                                                                                                                                                                                                                                                           
+-------------------- --------------------                                                                                                                                                                                                                                                                   
+Dr.Hina              Mr.Ram                                                                                                                                                                                                                                                                                 
+Dr.Himel             Mr.Rahim                                                                                                                                                                                                                                                                               
+Dr.Himel             Mr.Farooq                                                                                                                                                                                                                                                                              
+Dr.Himel             Ms.Riya                                                                                                                                                                                                                                                                                
+Dr.Auishi            Mrs.Rahima                                                                                                                                                                                                                                                                             
+Dr.Manya             Mr.Fahim                                                                                                                                                                                                                                                                               
+Dr.Tisa              Ms.Rattri                                                                                                                                                                                                                                                                              
+Dr.Ritu              Mr.Rahat                                                                                                                                                                                                                                                                               
+Dr.Ritu              Ms.Keya                                                                                                                                                                                                                                                                                
+Dr.Titu              Mr.Kafi                                                                                                                                                                                                                                                                                
+
+10 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SPOOL OFF

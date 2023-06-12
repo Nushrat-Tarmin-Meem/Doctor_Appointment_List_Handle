@@ -1,0 +1,349 @@
+SQL> set serveroutput on
+SQL> declare
+  2      id doctor.doctor_id%type;
+  3      name doctor.doctor_name%type;
+  4      location doctor.address%type;
+  5      payment doctor.fees%type;
+  6      begin
+  7      select doctor_id,doctor_name,address,fees into id,name,location,payment from doctor where doctor_id=2;
+  8      dbms_output.put_line('Doctor_Info   Id:' || id || '   Name:'|| name || '   Location:' || location|| '   Payment:'|| payment );
+  9      end;
+ 10      /
+Doctor_Info   Id:2   Name:Dr.Himel   Location:Pune   Payment:5000                                                                                                                                                                                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> declare
+  2      id doctor.doctor_id%type:=11;
+  3      category doctor.category%type:='Cardiologist';
+  4      name doctor.doctor_name%type:='Dr.Diana';
+  5      phone doctor.phone_no%type:='01893266744';
+  6      location doctor.address%type:='Mumbai';
+  7      payment doctor.fees%type:=9000;
+  8      begin
+  9      insert into doctor values(id,name,category,phone,location,payment);
+ 10      end;
+ 11      /
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> declare
+  2      cursor doctor_cursor is select * from doctor;
+  3      doctor_row doctor%rowtype;
+  4      begin
+  5      open doctor_cursor;
+  6      fetch doctor_cursor into doctor_row.doctor_id, doctor_row.doctor_name, doctor_row.category, doctor_row.phone_no,doctor_row.address, doctor_row.fees;
+  7      while doctor_cursor%found loop
+  8      dbms_output.put_line('ID:'||doctor_row.doctor_id||'  Name:'|| doctor_row.doctor_name||'  Category:'|| doctor_row.category||'  Phone:'|| doctor_row.phone_no||'  Address:'||doctor_row.address|| '  Fees:'||doctor_row.fees);
+  9      dbms_output.put_line('Row Number: '||doctor_cursor%rowcount);
+ 10      fetch doctor_cursor into doctor_row.doctor_id, doctor_row.doctor_name, doctor_row.category, doctor_row.phone_no,doctor_row.address, doctor_row.fees;
+ 11      end loop;
+ 12      close doctor_cursor;
+ 13      end;
+ 14      /
+ID:1  Name:Dr.Hina  Category:Cardiologist  Phone:01782366744  Address:Dhaka  Fees:1000                                                                                                                                                                                                                      
+Row Number: 1                                                                                                                                                                                                                                                                                               
+ID:2  Name:Dr.Himel  Category:Surgeon  Phone:01782366731  Address:Pune  Fees:5000                                                                                                                                                                                                                           
+Row Number: 2                                                                                                                                                                                                                                                                                               
+ID:3  Name:Dr.Auishi  Category:Cardiologist  Phone:01782366244  Address:Khulna  Fees:1000                                                                                                                                                                                                                   
+Row Number: 3                                                                                                                                                                                                                                                                                               
+ID:4  Name:Dr.Manya  Category:Neurologist  Phone:01782366744  Address:Dhaka  Fees:8000                                                                                                                                                                                                                      
+Row Number: 4                                                                                                                                                                                                                                                                                               
+ID:5  Name:Dr.Tisa  Category:Psychiatrist  Phone:01732366744  Address:Dhaka  Fees:1500                                                                                                                                                                                                                      
+Row Number: 5                                                                                                                                                                                                                                                                                               
+ID:6  Name:Dr.Sishir  Category:Radiologist  Phone:01782366722  Address:Rangpur  Fees:1000                                                                                                                                                                                                                   
+Row Number: 6                                                                                                                                                                                                                                                                                               
+ID:7  Name:Dr.Ritu  Category:Cardiologist  Phone:01782146744  Address:Dhaka  Fees:2000                                                                                                                                                                                                                      
+Row Number: 7                                                                                                                                                                                                                                                                                               
+ID:8  Name:Dr.Titu  Category:Urologist  Phone:01382366744  Address:Rangamati  Fees:500                                                                                                                                                                                                                      
+Row Number: 8                                                                                                                                                                                                                                                                                               
+ID:9  Name:Dr.Hiya  Category:Neurologist  Phone:01782322744  Address:Dhaka  Fees:7000                                                                                                                                                                                                                       
+Row Number: 9                                                                                                                                                                                                                                                                                               
+ID:10  Name:Dr.Mila  Category:Pediatrician  Phone:01782366744  Address:Dhaka  Fees:800                                                                                                                                                                                                                      
+Row Number: 10                                                                                                                                                                                                                                                                                              
+ID:11  Name:Dr.Diana  Category:Cardiologist  Phone:01893266744  Address:Mumbai  Fees:9000                                                                                                                                                                                                                   
+Row Number: 11                                                                                                                                                                                                                                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> alter table medicine add due_payment number(20);
+
+Table altered.
+
+SQL> select * from medicine;
+
+PATIENT_ID MEDICINE_NAME                  TEST_PACKAGE_AMOUNT PAID_PAYMENT DUE_PAYMENT                                                                                                                                                                                                                      
+---------- ------------------------------ ------------------- ------------ -----------                                                                                                                                                                                                                      
+         1 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         5 Afinitor                                      8000         8000                                                                                                                                                                                                                                  
+        10 Avastin                                      10000        10000                                                                                                                                                                                                                                  
+         9 Carmustine                                   12000        10000                                                                                                                                                                                                                                  
+         8 Zyloprim                                      8000         8000                                                                                                                                                                                                                                  
+         2 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         3 Beta-Blockers                                15000        14500                                                                                                                                                                                                                                  
+         4 Beta-Blockers                                10000         9500                                                                                                                                                                                                                                  
+         7 Tiptin 500mg                                  7000         7000                                                                                                                                                                                                                                  
+         6 Alymsys                                      10000         8800                                                                                                                                                                                                                                  
+
+10 rows selected.
+
+SQL> set serveroutput on
+SQL>  declare
+  2          cursor medicine_cursor is select * from medicine;
+  3          medicine_row medicine%rowtype;
+  4          begin
+  5          open medicine_cursor;
+  6          fetch medicine_cursor into medicine_row.patient_id, medicine_row.medicine_name, medicine_row.test_package_amount, medicine_row.paid_payment, medicine_row.due_payment;
+  7          while medicine_cursor%found loop
+  8          medicine_row.due_payment := medicine_row.test_package_amount-medicine_row.paid_payment;
+  9          dbms_output.put_line('Patient_Id:'|| medicine_row.patient_id||'  Medicine_Name:' || medicine_row.medicine_name ||'  Test_Pack_Amount:'|| medicine_row.test_package_amount ||'  Paid:'|| medicine_row.paid_payment ||'  Due:'|| medicine_row.due_payment);
+ 10          dbms_output.put_line('Row Number: '||medicine_cursor%rowcount);
+ 11          fetch medicine_cursor into medicine_row.patient_id, medicine_row.medicine_name, medicine_row.test_package_amount, medicine_row.paid_payment, medicine_row.due_payment;
+ 12          end loop;
+ 13          close medicine_cursor;
+ 14          end;
+ 15          /
+Patient_Id:1  Medicine_Name:Beta-Blockers  Test_Pack_Amount:10000  Paid:8000  Due:2000                                                                                                                                                                                                                      
+Row Number: 1                                                                                                                                                                                                                                                                                               
+Patient_Id:5  Medicine_Name:Afinitor  Test_Pack_Amount:8000  Paid:8000  Due:0                                                                                                                                                                                                                               
+Row Number: 2                                                                                                                                                                                                                                                                                               
+Patient_Id:10  Medicine_Name:Avastin  Test_Pack_Amount:10000  Paid:10000  Due:0                                                                                                                                                                                                                             
+Row Number: 3                                                                                                                                                                                                                                                                                               
+Patient_Id:9  Medicine_Name:Carmustine  Test_Pack_Amount:12000  Paid:10000  Due:2000                                                                                                                                                                                                                        
+Row Number: 4                                                                                                                                                                                                                                                                                               
+Patient_Id:8  Medicine_Name:Zyloprim  Test_Pack_Amount:8000  Paid:8000  Due:0                                                                                                                                                                                                                               
+Row Number: 5                                                                                                                                                                                                                                                                                               
+Patient_Id:2  Medicine_Name:Beta-Blockers  Test_Pack_Amount:10000  Paid:8000  Due:2000                                                                                                                                                                                                                      
+Row Number: 6                                                                                                                                                                                                                                                                                               
+Patient_Id:3  Medicine_Name:Beta-Blockers  Test_Pack_Amount:15000  Paid:14500  Due:500                                                                                                                                                                                                                      
+Row Number: 7                                                                                                                                                                                                                                                                                               
+Patient_Id:4  Medicine_Name:Beta-Blockers  Test_Pack_Amount:10000  Paid:9500  Due:500                                                                                                                                                                                                                       
+Row Number: 8                                                                                                                                                                                                                                                                                               
+Patient_Id:7  Medicine_Name:Tiptin 500mg  Test_Pack_Amount:7000  Paid:7000  Due:0                                                                                                                                                                                                                           
+Row Number: 9                                                                                                                                                                                                                                                                                               
+Patient_Id:6  Medicine_Name:Alymsys  Test_Pack_Amount:10000  Paid:8800  Due:1200                                                                                                                                                                                                                            
+Row Number: 10                                                                                                                                                                                                                                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from medicine;
+
+PATIENT_ID MEDICINE_NAME                  TEST_PACKAGE_AMOUNT PAID_PAYMENT DUE_PAYMENT                                                                                                                                                                                                                      
+---------- ------------------------------ ------------------- ------------ -----------                                                                                                                                                                                                                      
+         1 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         5 Afinitor                                      8000         8000                                                                                                                                                                                                                                  
+        10 Avastin                                      10000        10000                                                                                                                                                                                                                                  
+         9 Carmustine                                   12000        10000                                                                                                                                                                                                                                  
+         8 Zyloprim                                      8000         8000                                                                                                                                                                                                                                  
+         2 Beta-Blockers                                10000         8000                                                                                                                                                                                                                                  
+         3 Beta-Blockers                                15000        14500                                                                                                                                                                                                                                  
+         4 Beta-Blockers                                10000         9500                                                                                                                                                                                                                                  
+         7 Tiptin 500mg                                  7000         7000                                                                                                                                                                                                                                  
+         6 Alymsys                                      10000         8800                                                                                                                                                                                                                                  
+
+10 rows selected.
+
+SQL> set serveroutput on
+SQL>  declare
+  2          cursor medicine_cursor is select * from medicine;
+  3          medicine_row medicine%rowtype;
+  4          begin
+  5          open medicine_cursor;
+  6          fetch medicine_cursor into medicine_row.patient_id, medicine_row.medicine_name, medicine_row.test_package_amount, medicine_row.paid_payment, medicine_row.due_payment;
+  7          while medicine_cursor%found loop
+  8          update medicine set medicine.due_payment = medicine.test_package_amount-medicine.paid_payment;
+  9          fetch medicine_cursor into medicine_row.patient_id, medicine_row.medicine_name, medicine_row.test_package_amount, medicine_row.paid_payment, medicine_row.due_payment;
+ 10          end loop;
+ 11          close medicine_cursor;
+ 12          end;
+ 13          /
+
+PL/SQL procedure successfully completed.
+
+SQL>         select * from medicine;
+
+PATIENT_ID MEDICINE_NAME                  TEST_PACKAGE_AMOUNT PAID_PAYMENT DUE_PAYMENT                                                                                                                                                                                                                      
+---------- ------------------------------ ------------------- ------------ -----------                                                                                                                                                                                                                      
+         1 Beta-Blockers                                10000         8000        2000                                                                                                                                                                                                                      
+         5 Afinitor                                      8000         8000           0                                                                                                                                                                                                                      
+        10 Avastin                                      10000        10000           0                                                                                                                                                                                                                      
+         9 Carmustine                                   12000        10000        2000                                                                                                                                                                                                                      
+         8 Zyloprim                                      8000         8000           0                                                                                                                                                                                                                      
+         2 Beta-Blockers                                10000         8000        2000                                                                                                                                                                                                                      
+         3 Beta-Blockers                                15000        14500         500                                                                                                                                                                                                                      
+         4 Beta-Blockers                                10000         9500         500                                                                                                                                                                                                                      
+         7 Tiptin 500mg                                  7000         7000           0                                                                                                                                                                                                                      
+         6 Alymsys                                      10000         8800        1200                                                                                                                                                                                                                      
+
+10 rows selected.
+
+SQL> alter table patient add bmi number(5,2);
+
+Table altered.
+
+SQL> select * from patient;
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG        BMI                                                                                                                                                                                                                    
+---------- -------------------- ---------- ---------- ------------ ---------- ----------                                                                                                                                                                                                                    
+         1 Mr.Rahim                      2         58         1.53       62.5                                                                                                                                                                                                                               
+         2 Mr.Farooq                     2         43         1.57       65.5                                                                                                                                                                                                                               
+         3 Mrs.Rahima                    3         38         1.52       60.5                                                                                                                                                                                                                               
+         4 Mr.Ram                        1         39         1.57       67.5                                                                                                                                                                                                                               
+         5 Mr.Fahim                      4         51         1.53       61.5                                                                                                                                                                                                                               
+         6 Ms.Riya                       2         50         1.63       63.5                                                                                                                                                                                                                               
+         7 Ms.Rattri                     5         54         1.53       77.5                                                                                                                                                                                                                               
+         8 Mr.Kafi                       8         56         1.61         62                                                                                                                                                                                                                               
+         9 Mr.Rahat                      7         43         1.43         61                                                                                                                                                                                                                               
+        10 Ms.Keya                       7         19         1.93       52.5                                                                                                                                                                                                                               
+
+10 rows selected.
+
+SQL> set serveroutput on
+SQL>  declare
+  2          cursor patient_cursor is select * from patient;
+  3          patient_row patient%rowtype;
+  4          begin
+  5          open patient_cursor;
+  6          fetch patient_cursor into patient_row.patient_id, patient_row.patient_name, patient_row.doctor_id, patient_row.age, patient_row.height_meter, patient_row.weight_kg ,patient_row.bmi;
+  7          while patient_cursor%found loop
+  8          update patient set patient.bmi = patient.weight_kg/(patient.height_meter*patient.height_meter);
+  9          fetch patient_cursor into patient_row.patient_id, patient_row.patient_name, patient_row.doctor_id, patient_row.age, patient_row.height_meter, patient_row.weight_kg ,patient_row.bmi;
+ 10          end loop;
+ 11          close patient_cursor;
+ 12          end;
+ 13          /
+
+PL/SQL procedure successfully completed.
+
+SQL>         select * from patient;
+
+PATIENT_ID PATIENT_NAME          DOCTOR_ID        AGE HEIGHT_METER  WEIGHT_KG        BMI                                                                                                                                                                                                                    
+---------- -------------------- ---------- ---------- ------------ ---------- ----------                                                                                                                                                                                                                    
+         1 Mr.Rahim                      2         58         1.53       62.5       26.7                                                                                                                                                                                                                    
+         2 Mr.Farooq                     2         43         1.57       65.5      26.57                                                                                                                                                                                                                    
+         3 Mrs.Rahima                    3         38         1.52       60.5      26.19                                                                                                                                                                                                                    
+         4 Mr.Ram                        1         39         1.57       67.5      27.38                                                                                                                                                                                                                    
+         5 Mr.Fahim                      4         51         1.53       61.5      26.27                                                                                                                                                                                                                    
+         6 Ms.Riya                       2         50         1.63       63.5       23.9                                                                                                                                                                                                                    
+         7 Ms.Rattri                     5         54         1.53       77.5      33.11                                                                                                                                                                                                                    
+         8 Mr.Kafi                       8         56         1.61         62      23.92                                                                                                                                                                                                                    
+         9 Mr.Rahat                      7         43         1.43         61      29.83                                                                                                                                                                                                                    
+        10 Ms.Keya                       7         19         1.93       52.5      14.09                                                                                                                                                                                                                    
+
+10 rows selected.
+
+SQL> select patient_name,bmi as Perfect_BMI_Rate from patient where bmi>=18.0 and bmi<=24.0;
+
+PATIENT_NAME         PERFECT_BMI_RATE                                                                                                                                                                                                                                                                       
+-------------------- ----------------                                                                                                                                                                                                                                                                       
+Ms.Riya                          23.9                                                                                                                                                                                                                                                                       
+Mr.Kafi                         23.92                                                                                                                                                                                                                                                                       
+
+SQL> --array and loop
+SQL> set serveroutput on
+SQL> declare
+  2     counter number := 1;
+  3     d_name doctor.doctor_name%type;
+  4     type namearray is varray(11) of doctor.doctor_name%type;
+  5     a_name namearray:=namearray('D1', 'D2', 'D3', 'D4', 'D5', 'D6','D7','D8','D9', 'D10','D11');
+  6  begin
+  7     counter := 1;
+  8     for x in 1..11
+  9     loop
+ 10        select doctor_name into d_name from doctor where doctor_id=x;
+ 11        a_name(counter) := d_name;
+ 12        counter := counter + 1;
+ 13     end loop;
+ 14     counter := 1;
+ 15     while counter <= a_name.count
+ 16     loop
+ 17        dbms_output.put_line('Name:' || a_name(counter));
+ 18        counter := counter + 1;
+ 19     end loop;
+ 20  end;
+ 21  /
+Name:Dr.Hina                                                                                                                                                                                                                                                                                                
+Name:Dr.Himel                                                                                                                                                                                                                                                                                               
+Name:Dr.Auishi                                                                                                                                                                                                                                                                                              
+Name:Dr.Manya                                                                                                                                                                                                                                                                                               
+Name:Dr.Tisa                                                                                                                                                                                                                                                                                                
+Name:Dr.Sishir                                                                                                                                                                                                                                                                                              
+Name:Dr.Ritu                                                                                                                                                                                                                                                                                                
+Name:Dr.Titu                                                                                                                                                                                                                                                                                                
+Name:Dr.Hiya                                                                                                                                                                                                                                                                                                
+Name:Dr.Mila                                                                                                                                                                                                                                                                                                
+Name:Dr.Diana                                                                                                                                                                                                                                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> --if elseif
+SQL> set serveroutput on
+SQL> declare
+  2     counter number := 1;
+  3     d_name doctor.doctor_name%type;
+  4     d_category doctor.category%type;
+  5  begin
+  6     counter := 1;
+  7     for x in 1..11
+  8     loop
+  9        select doctor_name into d_name from doctor where doctor_id=x;
+ 10        select category into d_category from doctor where doctor_id=x;
+ 11        if d_category='Cardiologist'
+ 12         then
+ 13  dbms_output.put_line(d_name||' is a '||'Cardiologist');
+ 14        elsif d_category='Neurologist'
+ 15  then
+ 16  dbms_output.put_line(d_name||' is a '||'Neurologist');
+ 17  else
+ 18          dbms_output.put_line(d_name||' is a '||'Specialist');
+ 19  end if;
+ 20  counter := counter + 1;
+ 21     end loop;
+ 22  end;
+ 23  /
+Dr.Hina is a Cardiologist                                                                                                                                                                                                                                                                                   
+Dr.Himel is a Specialist                                                                                                                                                                                                                                                                                    
+Dr.Auishi is a Cardiologist                                                                                                                                                                                                                                                                                 
+Dr.Manya is a Neurologist                                                                                                                                                                                                                                                                                   
+Dr.Tisa is a Specialist                                                                                                                                                                                                                                                                                     
+Dr.Sishir is a Specialist                                                                                                                                                                                                                                                                                   
+Dr.Ritu is a Cardiologist                                                                                                                                                                                                                                                                                   
+Dr.Titu is a Specialist                                                                                                                                                                                                                                                                                     
+Dr.Hiya is a Neurologist                                                                                                                                                                                                                                                                                    
+Dr.Mila is a Specialist                                                                                                                                                                                                                                                                                     
+Dr.Diana is a Cardiologist                                                                                                                                                                                                                                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> --function
+SQL> set serveroutput on
+SQL> create function fun(id in varchar) return varchar AS
+  2  value doctor.doctor_name%type;
+  3  begin
+  4    select doctor_name into value from doctor where doctor_id = id;
+  5     return value;
+  6  end;
+  7  /
+
+Function created.
+
+SQL> set serveroutput on
+SQL> declare
+  2  name varchar(20);
+  3  begin
+  4  name:=fun(5);
+  5  dbms_output.put_line('D_Name of id 5: ' || name);
+  6  end;
+  7  /
+D_Name of id 5: Dr.Tisa                                                                                                                                                                                                                                                                                     
+
+PL/SQL procedure successfully completed.
+
+SQL> drop function fun;
+
+Function dropped.
+
+SQL> SPOOL OFF
+
